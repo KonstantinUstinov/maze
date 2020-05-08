@@ -1,0 +1,23 @@
+
+<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%date{"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",UTC} %logger [%mdc] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="ASYNCSTDOUT" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="STDOUT" />
+  </appender>
+
+  <!-- Set logging for all Akka library classes to ERROR -->
+  <logger name="akka" level="INFO" />
+
+
+  <root level="DEBUG">
+    <appender-ref ref="ASYNCSTDOUT" />
+  </root>
+
+</configuration>
+
